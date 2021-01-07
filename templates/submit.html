@@ -1,22 +1,75 @@
 {% block page_content %}
+{% load static %}
 <html>
 <head>
     <title>submit</title>
+    <link rel = "stylesheet" type = "text/css" href= "{% static 'budgetroyale/styles/submit.css' %}">
 </head>
 <body>
-    <h1 id = "titleText"> Welcome to the room </h1>
-    <div>
+    <div class = "content">
+        <h2>Lorem ipsum example prompt</h2>
+        <br />
         <form>
-            <label for = "field1">label1</label>
+            <label for = "field1">Entertainment</label>
             <input type = "text" id = "field1">
-            <label for = "field2">label2</label>
+            <br/><br/>
+            <label for = "field2">Food</label>
             <input type = "text" id = "field2">
-            <label for = "field3">label3</label>
+            <br/><br/>
+            <label for = "field3">Utilities</label>
             <input type = "text" id = "field3">
-            <input type="submit" value="Submit" id = "submitButton">
+            <br/><br/>
+            <button type= "button" id = "submitButton">Submit</button>
+
         </form>
     </div>
     <script>
+        // IF possible do most/all of this in the backend?
+        // This can just serve as a template for what to do to check for valid
+        // values
+        /*
+        function isInt(n) {
+            return n % 1 === 0;
+        }
+
+        function getPrecision(n) {
+            if (n.toString().includes(".")) {
+                return (n.toString()).split(".")[1].length; 
+            } 
+            return -1;
+        }
+        let submitButton  = document.getElementById("submitButton");
+        let field1 = document.getElementById("field1");
+        let field2 = document.getElementById("field2");
+        let field3 = document.getElementById("field3");
+        submitButton.onclick = () => {
+            let res1 = field1.value; 
+            let res2 = field2.value;
+            let res3 = field3.value;
+            let fieldRes = [res1, res2, res3]
+            
+            let total = 0; 
+            for (let i = 0; i < fieldRes.length; i++) {
+                let field = fieldRes[i];
+                let num = parseFloat(field);
+                // valid number
+                if (!Number.isNaN(num) && (isInt(num) || (getPrecision(num) <= 2 && getPrecision(num) > 0))){
+                    total += num;
+                } else {
+                    console.log(`Please enter a valid number for field ${i+1}!`); // or something like this
+                }
+            } 
+            const totalBudget = 4; // This should be gotten from the prompt info
+            const epsilon = 0.001;
+
+            if (total - totalBudget < epsilon) {
+                //something succcessful
+            } else {
+                //Some error message
+            }
+
+        }
+        */ 
     </script>
 </body>
 </html>

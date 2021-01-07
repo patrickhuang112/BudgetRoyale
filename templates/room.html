@@ -10,6 +10,37 @@
         <button type = "button"></button>
     </div>
     <script>
+        function isInt(n) {
+            return n % 1 === 0;
+        }
+
+        let submitButton  = document.getElementById("submitButton");
+        let field1 = document.getElementById("field1");
+        let field2 = document.getElementById("field2");
+        let field3 = document.getElementById("field3");
+        submitButton.onclick = () => {
+            let res1 = field1.value; 
+            let res2 = field2.value;
+            let res2 = field3.value;
+            let fieldRes = [res1, res2, res3]
+            let valid = true;
+            for (let i = 0; i < fieldRes.length; i++) {
+                field = fieldRes[i];
+                for (let j = 0; j < field.length; j++) {
+                    c = field.charAt(j); 
+                    
+                }
+            } 
+
+            console.log(parseInt(4.2));
+
+            if (valid) {
+                //something elsek
+            } else {
+                //Some error message
+            }
+
+        } 
     </script>
 </body>
 </html>
