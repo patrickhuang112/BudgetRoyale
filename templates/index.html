@@ -6,8 +6,18 @@
     <link rel = "stylesheet" type = "text/css" href= "{% static 'budgetroyale/styles/index.css' %}">
 </head>
 <body>
+    <style>
+        body {
+          background-image: url('{% static "budgetroyale/images/backgroundGame.png"%}');
+          background-size: 100% 100%;
+        }
+    </style>
+
+    <img src = "{% static "budgetroyale/images/b_royale.png" %}" class = "center"/>
+    
+
     <div class = "content">
-        <h1 id = "titleText"> Welcome text </h1>
+        <input type = "text" id = "username" name = "username" placeholder = "Enter your name">
         <button type = "button" id = "createRoomButton">Create a room</button>
     </div>
     <script>
