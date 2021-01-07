@@ -18,9 +18,15 @@
 
     <div class = "content">
         <input type = "text" id = "username" name = "username" placeholder = "Enter your name">
+        <form action='createRoomBut' method='POST'>{% csrf_token %}>
         <button type = "button" id = "createRoomButton">Create a room</button>
+        </form>
     </div>
     <script>
+        if(document.getElementById('createRoomButton').clicked == true)
+        {
+            window.location.href='/room';
+        }
         console.log('here');
         /* 
         test stuff
