@@ -1,20 +1,99 @@
-{% block page_content %}
+{% load static %}
+
 <html>
 <head>
-    <title>submit</title>
+    <title> test title</title>
+    <link rel = "stylesheet" type = "text/css" href= "{% static 'budgetroyale/styles/index.css' %}">
 </head>
 <body>
-    <h1 id = "titleText"> Welcome to the room </h1>
     <div>
-        <div id = "otherBudget">
-            
+        <div id="submissions">
+            <div class="my-page" data-density="hard">
+                Page Cover
+            </div>
+            <div class="my-page">
+                Page one
+            </div>
+            <div class="my-page">
+                Page two
+            </div>
+            <div class="my-page">
+                Page three
+            </div>
+            <div class="my-page">
+                Page four
+            </div>
+            <div class="my-page" data-density="hard">
+                Last page
+            </div>
         </div>
+        <div id = buttons> 
         <button type = "button" id = "yes">Yes</button>
         <button type = "button" id = "no">No</button>
+        </div>
     </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
+        $.getScript("{% static 'budgetroyale/js/page-flip.browser.js' %}", function()
+        {
+            console.log('here');
+
+            const pageFlip = new St.PageFlip(document.getElementById('submissions'),
+                {
+                    width: 400, // required parameter - base page width
+                    height: 600  // required parameter - base page height
+                }
+            );
+
+            pageFlip.loadFromHTML(document.querySelectorAll('.my-page'));
+        });
     </script>
 </body>
 </html>
 
-{% endblock %}
+<!--
+ <div>
+        <div id="submissions">
+            <div class="my-page" data-density="hard">
+                Page Cover
+            </div>
+            <div class="my-page">
+                Page one
+            </div>
+            <div class="my-page">
+                Page two
+            </div>
+            <div class="my-page">
+                Page three
+            </div>
+            <div class="my-page">
+                Page four
+            </div>
+            <div class="my-page" data-density="hard">
+                Last page
+            </div>
+        </div>
+        <div id = buttons> 
+        <button type = "button" id = "yes">Yes</button>
+        <button type = "button" id = "no">No</button>
+        </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $.getScript("{% static 'budgetroyale/js/page-flip.browser.js' %}", function()
+        {
+            console.log('here');
+
+            const pageFlip = new St.PageFlip(document.getElementById('submissions'),
+                {
+                    width: 400, // required parameter - base page width
+                    height: 600  // required parameter - base page height
+                }
+            );
+
+            pageFlip.loadFromHTML(document.querySelectorAll('.my-page'));
+        });
+    </script>
+
+
+-->

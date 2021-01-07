@@ -21,5 +21,7 @@ from  budgetroyale import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('submit/', views.submit, name = 'submit'),
+    path('judge/', views.judge, name = 'judge'),
     url(r'^$', views.index, name='index'),
 ]
