@@ -24,12 +24,45 @@ button {
     display : block;
     margin-left: auto;
     margin-right : auto;
-    width : 50%;
+    width : 40%;
     text-align: center;
+    border: 2px solid #000;
+    border-radius: 15px;
+    height: 40%;
+    background-color: #DCDCDC;
 }
 
 .content button {
+    margin-top:5%;
     display : block;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 15px;
+    width: 80%;
+    height: 30%;
+    font-size: 30;
 }
+
+.content input{
+    border-radius: 5px;
+    border: #808080;
+    color:#808080;
+    border-width: thick;
+    margin-top:8%;
+    height: 25%;
+    width:80%;
+    font-weight: bold;
+    font-size:30;
+    text-align:center;
+}
+
+.center{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    width: 25%;
+    height: 30%;
+}
+    
+

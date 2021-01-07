@@ -3,50 +3,191 @@
 <html>
 <head>
     <title> test title</title>
-    <link rel = "stylesheet" type = "text/css" href= "{% static 'budgetroyale/styles/index.css' %}">
+    <link rel = "stylesheet" type = "text/css" href= "{% static 'budgetroyale/styles/judge.css' %}">
 </head>
 <body>
-    <div>
-        <div id="submissions">
-            <div class="my-page" data-density="hard">
-                Page Cover
+
+    <div class="demo">
+        <header class="demo__header"></header>
+        <div class="demo__content">
+          <div class="demo__card-cont">
+            <div class="demo__card">
+              <div class="demo__card__top brown">
+                <div class="demo__card__img"></div>
+                <p class="demo__card__name">Hungry cat 6</p>
+              </div>
+              <div class="demo__card__btm">
+                <p class="demo__card__we">Whatever</p>
+              </div>
+              <div class="demo__card__choice m--reject"></div>
+              <div class="demo__card__choice m--like"></div>
+              <div class="demo__card__drag"></div>
             </div>
-            <div class="my-page">
-                Page one
+            <div class="demo__card">
+              <div class="demo__card__top lime">
+                <div class="demo__card__img"></div>
+                <p class="demo__card__name">Hungry cat 5</p>
+              </div>
+              <div class="demo__card__btm">
+                <p class="demo__card__we">Whatever</p>
+              </div>
+              <div class="demo__card__choice m--reject"></div>
+              <div class="demo__card__choice m--like"></div>
+              <div class="demo__card__drag"></div>
             </div>
-            <div class="my-page">
-                Page two
+            <div class="demo__card">
+              <div class="demo__card__top cyan">
+                <div class="demo__card__img"></div>
+                <p class="demo__card__name">Hungry cat 4</p>
+              </div>
+              <div class="demo__card__btm">
+                <p class="demo__card__we">Whatever</p>
+              </div>
+              <div class="demo__card__choice m--reject"></div>
+              <div class="demo__card__choice m--like"></div>
+              <div class="demo__card__drag"></div>
             </div>
-            <div class="my-page">
-                Page three
+            <div class="demo__card">
+              <div class="demo__card__top indigo">
+                <div class="demo__card__img"></div>
+                <p class="demo__card__name">Hungry cat 3</p>
+              </div>
+              <div class="demo__card__btm">
+                <p class="demo__card__we">Whatever</p>
+              </div>
+              <div class="demo__card__choice m--reject"></div>
+              <div class="demo__card__choice m--like"></div>
+              <div class="demo__card__drag"></div>
             </div>
-            <div class="my-page">
-                Page four
+            <div class="demo__card">
+              <div class="demo__card__top blue">
+                <div class="demo__card__img"></div>
+                <p class="demo__card__name">Hungry cat 2</p>
+              </div>
+              <div class="demo__card__btm">
+                <p class="demo__card__we">Whatever</p>
+              </div>
+              <div class="demo__card__choice m--reject"></div>
+              <div class="demo__card__choice m--like"></div>
+              <div class="demo__card__drag"></div>
             </div>
-            <div class="my-page" data-density="hard">
-                Last page
+            <div class="demo__card">
+              <div class="demo__card__top purple">
+                <div class="demo__card__img"></div>
+                <p class="demo__card__name">Hungry cat</p>
+              </div>
+              <div class="demo__card__btm">
+                <p class="demo__card__we">Whatever</p>
+              </div>
+              <div class="demo__card__choice m--reject"></div>
+              <div class="demo__card__choice m--like"></div>
+              <div class="demo__card__drag"></div>
             </div>
+          </div>
+          <p class="demo__tip">Swipe left or right</p>
         </div>
-        <div id = buttons> 
-        <button type = "button" id = "yes">Yes</button>
-        <button type = "button" id = "no">No</button>
+      </div>
+      <div class = buttons> 
+        <button type = "button" id = "like">Yes</button>
+        <button type = "button" id = "dislike">No</button>
         </div>
-    </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
-        $.getScript("{% static 'budgetroyale/js/page-flip.browser.js' %}", function()
-        {
-            console.log('here');
+        // CSS, JS, and HTML for this slide deck style stuff from https://codepen.io/suez/pen/MaeVBy
+        $(document).ready(function() {
 
-            const pageFlip = new St.PageFlip(document.getElementById('submissions'),
-                {
-                    width: 400, // required parameter - base page width
-                    height: 600  // required parameter - base page height
+            var animating = false;
+            var cardsCounter = 0;
+            var numOfCards = 6;
+            var decisionVal = 50;
+            var pullDeltaX = 0;
+            var deg = 0;
+            var $card, $cardReject, $cardLike;                
+
+            let cards = document.getElementsByClassName('demo__card');
+            console.log(cards);
+
+            function pullChange() {
+                animating = true;
+                deg = pullDeltaX / 10;
+                $card.css("transform", "translateX("+ pullDeltaX +"px) rotate("+ deg +"deg)");
+
+                var opacity = pullDeltaX / 100;
+                var rejectOpacity = (opacity >= 0) ? 0 : Math.abs(opacity);
+                var likeOpacity = (opacity <= 0) ? 0 : opacity;
+                $cardReject.css("opacity", rejectOpacity);
+                $cardLike.css("opacity", likeOpacity);
+            };
+
+            function release() {
+
+                if (pullDeltaX >= decisionVal) {
+                $card.addClass("to-right");
+                } else if (pullDeltaX <= -decisionVal) {
+                $card.addClass("to-left");
                 }
-            );
 
-            pageFlip.loadFromHTML(document.querySelectorAll('.my-page'));
+                if (Math.abs(pullDeltaX) >= decisionVal) {
+                $card.addClass("inactive");
+
+                setTimeout(function() {
+                        $card.addClass("below").removeClass("inactive to-left to-right");
+                        cardsCounter++;
+                        if (cardsCounter === numOfCards) {
+                            //$(".demo__card").removeClass("below");
+                        }
+                    }, 300);
+                }
+
+                if (Math.abs(pullDeltaX) < decisionVal) {
+                $card.addClass("reset");
+                }
+
+                setTimeout(function() {
+                    $card.attr("style", "").removeClass("reset")
+                        .find(".demo__card__choice").attr("style", "");
+
+                    pullDeltaX = 0;
+                    animating = false;
+                }, 300);
+            };
+
+            $(document).on("mousedown touchstart", ".demo__card:not(.inactive)", function(e) {
+                if (animating) return;    
+                console.log(cardsCounter);                
+                $card = $(cards[numOfCards - cardsCounter - 1]); 
+                $cardReject = $(".demo__card__choice.m--reject", $card);
+                $cardLike = $(".demo__card__choice.m--like", $card);
+                var startX =  e.pageX || e.originalEvent.touches[0].pageX;
+
+                $(document).on("mousemove touchmove", function(e) {
+                var x = e.pageX || e.originalEvent.touches[0].pageX;
+                pullDeltaX = (x - startX);
+                if (!pullDeltaX) return;
+                pullChange();
+                });
+
+                $(document).on("mouseup touchend", function() {
+                $(document).off("mousemove touchmove mouseup touchend");
+                if (!pullDeltaX) return; // prevents from rapid click events
+                release();
+                });
+            });           
+            $('#like').click(function() {
+                $card = $(cards[numOfCards - cardsCounter - 1]);
+                $cardReject = $(".demo__card__choice.m--reject", $card);
+                $cardLike = $(".demo__card__choice.m--like", $card);
+                pullDeltaX = 0;
+                while(Math.abs(pullDeltaX) <= decisionVal) {     
+                    pullChange();
+                    pullDeltaX++;                       
+                }
+                
+                release();
+            })
         });
+        
+
     </script>
 </body>
 </html>
@@ -95,5 +236,30 @@
         });
     </script>
 
-
+<div>
+        <div id="submissions">
+            <div class="my-page" data-density="hard">
+                Page Cover
+            </div>
+            <div class="my-page">
+                Page one
+            </div>
+            <div class="my-page">
+                Page two
+            </div>
+            <div class="my-page">
+                Page three
+            </div>
+            <div class="my-page">
+                Page four
+            </div>
+            <div class="my-page" data-density="hard">
+                Last page
+            </div>
+        </div>
+        <div id = buttons> 
+        <button type = "button" id = "yes">Yes</button>
+        <button type = "button" id = "no">No</button>
+        </div>
+    </div>
 -->
