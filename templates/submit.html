@@ -19,7 +19,9 @@
             <label for = "field3">Utilities</label>
             <input type = "text" id = "field3">
             <br/><br/>
+            <form action='submit' method='POST'>{% csrf_token %}
             <button type= "button" id = "submitButton">Submit</button>
+            </form>
 
         </form>
     </div>

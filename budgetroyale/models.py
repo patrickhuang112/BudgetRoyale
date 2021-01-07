@@ -9,11 +9,11 @@ class BudgetSubmission(models.Model):
 class User(models.Model):
     score = models.IntegerField();
     name = models.CharField(max_length = 255);
-    ID = models.CharField(max_length = 12);
+    UserID = models.CharField(max_length = 12);
     rank = models.IntegerField();
 
 class Room(models.Model):
-    roomCode = models.charField(max_length = 20);
+    roomCode = models.CharField(max_length = 20);
 
     user1 = User()
     budgetSub1 = BudgetSubmission();
