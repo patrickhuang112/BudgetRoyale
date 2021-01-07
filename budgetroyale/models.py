@@ -1,19 +1,18 @@
 from django.db import models
 
 class BudgetSubmission(models.Model):
-    title = models.CharField(max_length=255);
-    budgetPlan = models.TextField();
-    BudgetCateg = models.CharField(max_length=255);
-    yesVotes = models.IntegerField();
+    title = models.CharField(max_length=255, default="");
+    budgetPlan = models.TextField(default="");
+    BudgetCateg = models.CharField(max_length=255, default = "");
+    yesVotes = models.IntegerField(default=0);
 
 class User(models.Model):
-    score = models.IntegerField();
-    name = models.CharField(max_length = 255);
-    UserID = models.CharField(max_length = 12);
-    rank = models.IntegerField();
+    score = models.IntegerField(default=0);
+    name = models.CharField(max_length = 255, default = "");
+    rank = models.IntegerField(default=0);
 
 class Room(models.Model):
-    roomCode = models.CharField(max_length = 20);
+    roomCode = models.CharField(max_length = 20, default = "");
 
     user1 = User()
     budgetSub1 = BudgetSubmission();
@@ -29,4 +28,3 @@ class Room(models.Model):
 
     user5 = User();
     budgetSub1 = BudgetSubmission();
-
