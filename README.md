@@ -9,5 +9,7 @@ One way to learn anything is through constructive feedback. Another way to learn
 DRAFT
 ## Django Commands:
 Runserver : python manage.py runserver
-MakeMigrations (whenever you add a file, field, good habit to do after making changes: ) : python manage.py makemigrations 
+<br/>
+MakeMigrations (whenever you add a file, field, good habit to do after making changes) : python manage.py makemigrations 
+<br/>
 Apply migrations: python manage.py migrate
