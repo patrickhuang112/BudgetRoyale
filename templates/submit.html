@@ -19,13 +19,34 @@
             <label for = "field3">Utilities</label>
             <input type = "text" id = "field3">
             <br/><br/>
+<<<<<<< HEAD
+            <button type= "button" id = "submitButton" onclick="countbutton();">Submit</button>
+=======
             <form action='submit' method='POST'>{% csrf_token %}
             <button type= "button" id = "submitButton">Submit</button>
             </form>
+>>>>>>> 8dbb5b6b9e7059e733d6430a04f64575c1dd6390
 
         </form>
     </div>
     <script>
+    var count=0;
+    function countbutton(){
+
+      count=count+1;
+      console.log(count);
+
+var next;
+      if (count==5){
+        next=setTimeout(nextpage, 2000);
+
+      }
+    }
+
+
+  function nextpage(){
+    window.location.href='/judge';
+  }
         // IF possible do most/all of this in the backend?
         // This can just serve as a template for what to do to check for valid
         // values
@@ -36,8 +57,8 @@
 
         function getPrecision(n) {
             if (n.toString().includes(".")) {
-                return (n.toString()).split(".")[1].length; 
-            } 
+                return (n.toString()).split(".")[1].length;
+            }
             return -1;
         }
         let submitButton  = document.getElementById("submitButton");
@@ -45,12 +66,12 @@
         let field2 = document.getElementById("field2");
         let field3 = document.getElementById("field3");
         submitButton.onclick = () => {
-            let res1 = field1.value; 
+            let res1 = field1.value;
             let res2 = field2.value;
             let res3 = field3.value;
             let fieldRes = [res1, res2, res3]
-            
-            let total = 0; 
+
+            let total = 0;
             for (let i = 0; i < fieldRes.length; i++) {
                 let field = fieldRes[i];
                 let num = parseFloat(field);
@@ -60,7 +81,7 @@
                 } else {
                     console.log(`Please enter a valid number for field ${i+1}!`); // or something like this
                 }
-            } 
+            }
             const totalBudget = 4; // This should be gotten from the prompt info
             const epsilon = 0.001;
 
@@ -71,7 +92,7 @@
             }
 
         }
-        */ 
+        */
     </script>
 </body>
 </html>
