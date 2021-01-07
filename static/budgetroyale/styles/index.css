@@ -1,0 +1,10 @@
+body {
+    margin : 0;
+    padding : 0;
+    font-family: Arial;
+    background: rgba(255, 209, 214, .7);
+}
+
+h1 {
+    font-size: 40px;
+}
