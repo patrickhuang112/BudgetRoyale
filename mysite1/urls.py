@@ -14,17 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path
-from  budgetroyale import views
+from budgetroyale import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('submit/', views.submit, name = 'submit'),
     path('judge/', views.judge, name = 'judge'),
+	url(r'^api/rooms$', views.room_list),
+    url(r'^api/rooms/(?P<pk>[0-9]+)$', views.room_detail),
+    url(r'^api/rooms/published$', views.room_list_published),
     url(r'^$', views.index, name='index'),
     path('submit', views.submit, name='submit'),
     path('createdRoom', views.index, name='room'),
-    #path('delete_product', views.delete_product, name='delete_product')
 ]
