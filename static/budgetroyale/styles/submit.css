@@ -22,14 +22,65 @@ button {
 
 .content {
     display : block;
-    margin-left: auto;
-    margin-right : auto;
-    width : 50%;
-    text-align: center;
+    margin: 0 auto;
+    width : 95%;
 }
 
 .content button {
     display : block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.b_royale{
+    height:12%;
+    width: 12%;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-bottom: 1%;
+}
+
+.content > .prompt{
+    color: black;
+    background-color:  #DCDCDC;
+    border-radius: 7px;
+    height: 3%;
+    text-align: center;
+    padding: 40px 0;
+    font-size: 28;
+    font-weight: bold;
+}
+
+ .content >.players{
+    margin-top: 2%;
+    color: black;
+    background-color: white;
+    min-width: 10%;
+    width: 3%;
+    height: 30%;
+    text-align: center;
+    border-radius: 7px;
+    font-weight: bold;
+    float: left;
+}
+
+#field1{
+    border-radius: 7px;
+    height:50%;
+    width:100%;
+    font-size: 30;
+    padding: 0 0;
+}
+
+.content > .forms{
+    margin-left: 13%;
+    margin-top: 2%;
+}
+
+#submitButton{
+    margin-left: 90.5%;
+    margin-top:1%;
+    border-radius: 8px;
+    background-color: #FFD700;
+    font-weight: bold;
 }
