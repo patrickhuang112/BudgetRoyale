@@ -88,8 +88,8 @@
         </div>
       </div>
       <div class = buttons> 
-        <button type = "button" id = "like">Yes</button>
-        <button type = "button" id = "dislike">No</button>
+        <button type = "button" id = "like"> <img src = "{% static "budgetroyale/images/up.png" %}"  width="10%" /></button>
+        <button type = "button" id = "dislike"><img src = "{% static "budgetroyale/images/no.png" %}"  " width="8%" /></button>
         </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
@@ -174,6 +174,19 @@
                 });
             });           
             $('#like').click(function() {
+                $card = $(cards[numOfCards - cardsCounter - 1]);
+                $cardReject = $(".demo__card__choice.m--reject", $card);
+                $cardLike = $(".demo__card__choice.m--like", $card);
+                pullDeltaX = 0;
+                while(Math.abs(pullDeltaX) <= decisionVal) {     
+                    pullChange();
+                    pullDeltaX++;                       
+                }
+                
+                release();
+            })
+            //how to make it swipe left when clikcing on dislike button?
+            $('#dislike').click(function() {
                 $card = $(cards[numOfCards - cardsCounter - 1]);
                 $cardReject = $(".demo__card__choice.m--reject", $card);
                 $cardLike = $(".demo__card__choice.m--like", $card);

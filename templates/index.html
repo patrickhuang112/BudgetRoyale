@@ -10,6 +10,9 @@
         body {
           background-image: url('{% static "budgetroyale/images/backgroundGame.png"%}');
           background-size: 100% 100%;
+          margin : 0;
+        padding : 0;
+        font-family: Arial;
         }
     </style>
 
@@ -17,11 +20,14 @@
     
 
     <div class = "content">
-        <input type = "text" id = "username" name = "username" placeholder = "Enter your name">
-        <button type = "button" id = "createRoomButton">Create a room</button>
+        <form action='createdRoom' method='POST'>{% csrf_token %}
+            <input type = "submit" value = "Create a room" id = "createRoomButton">
+        </form>
     </div>
     <script>
-        console.log('here');
+        document.getElementById('createRoomButton').onclick = () => {
+
+        }
         /* 
         test stuff
         function isInt(n) {

@@ -24,4 +24,7 @@ urlpatterns = [
     path('submit/', views.submit, name = 'submit'),
     path('judge/', views.judge, name = 'judge'),
     url(r'^$', views.index, name='index'),
+    path('submit', views.submit, name='submit'),
+    path('createdRoom', views.index, name='room'),
+    #path('delete_product', views.delete_product, name='delete_product')
 ]
