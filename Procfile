@@ -1,1 +1,1 @@
-web: gunicorn budgetroyale:app
+web: gunicorn BudgetRoyale:app
