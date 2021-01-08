@@ -22,10 +22,10 @@
             <div class="demo__card">
               <div class="demo__card__top brown">
                 <div class="demo__card__img"></div>
-                <p class="demo__card__name">Hungry cat 6</p>
+                <p class="demo__card__name">Question 1</p>
               </div>
               <div class="demo__card__btm">
-                <p class="demo__card__we">Whatever</p>
+                <p class="demo__card__we">Given $3000, how much would you save for rent, food, and entertainment?</p>
               </div>
               <div class="demo__card__choice m--reject"></div>
               <div class="demo__card__choice m--like"></div>
@@ -34,10 +34,10 @@
             <div class="demo__card">
               <div class="demo__card__top lime">
                 <div class="demo__card__img"></div>
-                <p class="demo__card__name">Hungry cat 5</p>
+                <p class="demo__card__name">Question 2</p>
               </div>
               <div class="demo__card__btm">
-                <p class="demo__card__we">Whatever</p>
+                <p class="demo__card__we">Based on your risk profile, what percent would you invest in stocks?</p>
               </div>
               <div class="demo__card__choice m--reject"></div>
               <div class="demo__card__choice m--like"></div>
@@ -46,10 +46,10 @@
             <div class="demo__card">
               <div class="demo__card__top cyan">
                 <div class="demo__card__img"></div>
-                <p class="demo__card__name">Hungry cat 4</p>
+                <p class="demo__card__name">Question 3</p>
               </div>
               <div class="demo__card__btm">
-                <p class="demo__card__we">Whatever</p>
+                <p class="demo__card__we">Based on your risk profile, what percent would you invest in bonds?</p>
               </div>
               <div class="demo__card__choice m--reject"></div>
               <div class="demo__card__choice m--like"></div>
@@ -58,44 +58,22 @@
             <div class="demo__card">
               <div class="demo__card__top indigo">
                 <div class="demo__card__img"></div>
-                <p class="demo__card__name">Hungry cat 3</p>
+                <p class="demo__card__name">Question 4</p>
               </div>
               <div class="demo__card__btm">
-                <p class="demo__card__we">Whatever</p>
+                <p class="demo__card__we">Given $3000, what percent would you invest in stocks?</p>
               </div>
               <div class="demo__card__choice m--reject"></div>
               <div class="demo__card__choice m--like"></div>
               <div class="demo__card__drag"></div>
             </div>
-            <div class="demo__card">
-              <div class="demo__card__top blue">
-                <div class="demo__card__img"></div>
-                <p class="demo__card__name">Hungry cat 2</p>
-              </div>
-              <div class="demo__card__btm">
-                <p class="demo__card__we">Whatever</p>
-              </div>
-              <div class="demo__card__choice m--reject"></div>
-              <div class="demo__card__choice m--like"></div>
-              <div class="demo__card__drag"></div>
-            </div>
-            <div class="demo__card">
-              <div class="demo__card__top purple">
-                <div class="demo__card__img"></div>
-                <p class="demo__card__name">Hungry cat</p>
-              </div>
-              <div class="demo__card__btm">
-                <p class="demo__card__we">Whatever</p>
-              </div>
-              <div class="demo__card__choice m--reject"></div>
-              <div class="demo__card__choice m--like"></div>
-              <div class="demo__card__drag"></div>
-            </div>
+
+          
           </div>
           <p class="demo__tip">Swipe left or right</p>
         </div>
       </div>
-      <div class = buttons> 
+      <div class = buttons>
         <button type = "button" id = "like"><img src = "{% static 'budgetroyale/images/up.png' %}" width = '10px'; id = 'likepic'/></button>
         <button type = "button" id = "dislike"><img src = "{% static 'budgetroyale/images/no.png' %}" width = '10px'; id = 'dislikepic'/></button>
         </div>
@@ -110,7 +88,7 @@
             var decisionVal = 50;
             var pullDeltaX = 0;
             var deg = 0;
-            var $card, $cardReject, $cardLike;                
+            var $card, $cardReject, $cardLike;
 
             let cards = document.getElementsByClassName('demo__card');
             console.log(cards);
@@ -161,9 +139,9 @@
             };
 
             $(document).on("mousedown touchstart", ".demo__card:not(.inactive)", function(e) {
-                if (animating) return;    
-                console.log(cardsCounter);                
-                $card = $(cards[numOfCards - cardsCounter - 1]); 
+                if (animating) return;
+                console.log(cardsCounter);
+                $card = $(cards[numOfCards - cardsCounter - 1]);
                 $cardReject = $(".demo__card__choice.m--reject", $card);
                 $cardLike = $(".demo__card__choice.m--like", $card);
                 var startX =  e.pageX || e.originalEvent.touches[0].pageX;
@@ -180,17 +158,17 @@
                 if (!pullDeltaX) return; // prevents from rapid click events
                 release();
                 });
-            });           
+            });
             $('#like').click(function() {
                 $card = $(cards[numOfCards - cardsCounter - 1]);
                 $cardReject = $(".demo__card__choice.m--reject", $card);
                 $cardLike = $(".demo__card__choice.m--like", $card);
                 pullDeltaX = 0;
-                while(Math.abs(pullDeltaX) <= decisionVal) {     
+                while(Math.abs(pullDeltaX) <= decisionVal) {
                     pullChange();
-                    pullDeltaX++;                       
+                    pullDeltaX++;
                 }
-                
+
                 release();
             })
             //how to make it swipe left when clikcing on dislike button?
@@ -199,15 +177,15 @@
                 $cardReject = $(".demo__card__choice.m--reject", $card);
                 $cardLike = $(".demo__card__choice.m--like", $card);
                 pullDeltaX = 0;
-                while(Math.abs(pullDeltaX) <= decisionVal) {     
+                while(Math.abs(pullDeltaX) <= decisionVal) {
                     pullChange();
-                    pullDeltaX--;                       
+                    pullDeltaX--;
                 }
-                
+
                 release();
             })
         });
-        
+
 
     </script>
 </body>
@@ -235,7 +213,7 @@
                 Last page
             </div>
         </div>
-        <div id = buttons> 
+        <div id = buttons>
         <button type = "button" id = "yes">Yes</button>
         <button type = "button" id = "no">No</button>
         </div>
@@ -278,7 +256,7 @@
                 Last page
             </div>
         </div>
-        <div id = buttons> 
+        <div id = buttons>
         <button type = "button" id = "yes">Yes</button>
         <button type = "button" id = "no">No</button>
         </div>
