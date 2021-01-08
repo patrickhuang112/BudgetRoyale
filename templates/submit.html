@@ -6,24 +6,51 @@
     <link rel = "stylesheet" type = "text/css" href= "{% static 'budgetroyale/styles/submit.css' %}">
 </head>
 <body>
-    <div class = "content">
-        <h2>Lorem ipsum example prompt</h2>
-        <br />
-        <form>
-            <label for = "field1">Entertainment</label>
-            <input type = "text" id = "field1">
-            <br/><br/>
-            <label for = "field2">Food</label>
-            <input type = "text" id = "field2">
-            <br/><br/>
-            <label for = "field3">Utilities</label>
-            <input type = "text" id = "field3">
-            <br/><br/>
-            <form action='submit' method='POST'>{% csrf_token %}
-            <button type= "button" id = "submitButton">Submit</button>
-            </form>
+    <style>
+        body {
+          background-image: url('{% static "budgetroyale/images/backgroundGame.png"%}');
+          background-size: 100% 100%;
+        }
+    </style>
 
-        </form>
+    <img src = "{% static "budgetroyale/images/b_royale.png" %}" class = "b_royale"/>
+    <div class = "content">
+        <div class = "prompt">
+            If you had $400 during the Pandemic, what would you buy? <!-- you can replace with random prompts -->
+        </div>
+
+            <div class = "players">
+
+                <div id = "player1">
+                    <p>player1</p>
+                </div>
+            
+                <div id = "player2">
+                    <p>player2</p>
+                </div>
+
+                <div id = "player3">
+                    <p>player3</p>
+                </div>
+
+                <div id = "player4">
+                    <p>player4</p>
+                </div>
+
+                <div id = "player5">
+                    <p>player5</p>
+                </div>
+            </div>
+        <div class = "forms">
+            <form>           
+                <input type = "text" id = "field1" placeholder = "Enter Answer...">
+                
+                <form action='submit' method='POST'>{% csrf_token %}
+                <button type= "button" id = "submitButton">Submit</button>
+                </form>
+
+            </form>
+        </div>
     </div>
     <script>
     var count=0;
