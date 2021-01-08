@@ -1,20 +1,62 @@
 {% block page_content %}
+{% load static %}
 <html>
 <head>
     <title>room</title>
+    <link rel = "stylesheet" type = "text/css" href= "{% static 'budgetroyale/styles/room.css' %}">
 </head>
 <body>
-    <h1 id = "titleText"> Welcome to the room </h1>
-    <div>
-        <input type = "text" id = "username" name = "username" placeholder = "Enter your name">
-        <form method='get' action='#'>
-        <input type="submit" value="Next" name="Next"/>
-
-        <button type = "createRoom" name = "create" id = "">Create a room</button>
-            </form>
-        <button type = "button"></button>
+    <style>
+        body {
+          background-image: url('{% static "budgetroyale/images/backgroundGame.png"%}');
+          background-size: 100% 100%;
+          margin : 0;
+        padding : 0;
+        font-family: Arial;
+        }
+    </style>
+    <div id = "content" name = "content">
+        <div class = 'enterNameDiv'>
+            <form action='judge' method='POST' >{% csrf_token %}
+                <input type = "text" id = "username" name = "username" placeholder = "Enter your name">
+                <input type = "submit" id = "submitButton" value = "Go to room">
+             </form>
+        </div>
     </div>
+
+    
     <script>
+        
+        let roomDiv = `
+        <div class = 'room'>
+            <div class = 'top'>
+                <h2 id = "playersRemaining">Players Remaining</h2>
+                <img src = "{% static "budgetroyale/images/b_royale.png" %}" class = "logo"/>
+                <form method='get' action='#' >
+                    <input type="submit" value="Start game" id = "startGame" />
+                </form>
+            </div>
+            <div class = 'middle'>
+                <div id = "row1">
+                <div id = 'playercol1'>
+                    <h2 id = "playertext">Player 1</h2>
+                </div>   
+                </div>
+            </div>
+            <div class = 'bottom'>
+                <h2>Invite your friends!!!</h2>    
+                <p>link</p>
+            </div>
+        </div>
+        `
+        let content = document.getElementById('content');
+        let submitButton = document.getElementById('submitButton');
+
+        submitButton.onclick = () => {
+            // Send some kind of post request
+            content.innerHTML = roomDiv;
+        }
+        /*
         function isInt(n) {
             return n % 1 === 0;
         }
@@ -46,6 +88,7 @@
             }
 
         } 
+        */
     </script>
 </body>
 </html>
