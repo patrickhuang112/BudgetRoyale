@@ -24,13 +24,6 @@ button {
   height: 100%;
   text-align: center;
 }
-#like {
-  position:absolute;
-  left: 10%;
-}
-#dislike {
-  position : absolute;
-}
 
 *,
 *:before,
