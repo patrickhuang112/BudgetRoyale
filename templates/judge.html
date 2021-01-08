@@ -185,6 +185,19 @@
                 
                 release();
             })
+            //how to make it swipe left when clikcing on dislike button?
+            $('#dislike').click(function() {
+                $card = $(cards[numOfCards - cardsCounter - 1]);
+                $cardReject = $(".demo__card__choice.m--reject", $card);
+                $cardLike = $(".demo__card__choice.m--like", $card);
+                pullDeltaX = 0;
+                while(Math.abs(pullDeltaX) <= decisionVal) {     
+                    pullChange();
+                    pullDeltaX++;                       
+                }
+                
+                release();
+            })
         });
         
 
