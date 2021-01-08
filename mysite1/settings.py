@@ -26,7 +26,7 @@ SECRET_KEY = 'z0mn=o%_^kev(82dzx$m7ktt*tvirs*f7%t5cen!vtec62!&wf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mysite1',
+    'budgetroyale',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +122,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
@@ -129,4 +132,3 @@ STATICFILES_DIRS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
