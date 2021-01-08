@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import User, BudgetSubmission, Room
+from django.template import RequestContext
+
 # Create your views here.
 def index(request):
     if request.method == "POST":
@@ -12,7 +14,7 @@ def judge(request):
 def room(request):
     if(request.method == "get"):
         #arham got this part, set up urls already
-        return render(request, 'room.html')
+        return render(request, 'room.html', RequestContext(request))
 
 def submit(request):
     if(request.method == "post"):

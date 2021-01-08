@@ -24,9 +24,8 @@
         </div>
     </div>
 
-    
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script>
-        
         let roomDiv = `
         <div class = 'room'>
             <div class = 'top'>
@@ -51,9 +50,30 @@
         `
         let content = document.getElementById('content');
         let submitButton = document.getElementById('submitButton');
-
+        let nameField = document.getElementById('username');
         submitButton.onclick = () => {
-            // Send some kind of post request
+            console.log(nameField.value);
+            const url='/api/users/';
+            const headers = new Headers( {
+                'Content-Type': 'application/JSON; charset=utf8'
+            })
+            const data = {
+                "score": 9,
+                "name": nameField.value,
+                "rank": 1234,
+                "room": "10"
+            }
+
+            fetch(url, {
+                method: "POST", 
+                headers: headers,
+                body: JSON.stringify(data)
+                }).then(res => {
+                    res.json().then(res2 => {
+                        console.log(res2);
+                });
+            });
+
             content.innerHTML = roomDiv;
         }
         /*

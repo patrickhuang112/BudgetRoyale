@@ -26,8 +26,30 @@
     </div>
     <script>
         document.getElementById('createRoomButton').onclick = () => {
+            
+            const url2='/api/rooms/';
+            const headers = new Headers( {
+                'Content-Type': 'application/JSON; charset=utf8'
+            })
+            const data = {
+                "roomCode": "9",
+                "contestantsCount": 0,
+                "submissions": "123",
+                "state": 13
+            }
 
+            fetch(url2, {
+                method: "POST", 
+                headers: headers,
+                body: JSON.stringify(data)
+                }).then(res => {
+                    res.json().then(res2 => {
+                        console.log(res2);
+                });
+            });
+            
         }
+        
         /* 
         test stuff
         function isInt(n) {

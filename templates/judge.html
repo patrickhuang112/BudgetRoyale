@@ -6,7 +6,15 @@
     <link rel = "stylesheet" type = "text/css" href= "{% static 'budgetroyale/styles/judge.css' %}">
 </head>
 <body>
-
+  <style>
+    body {
+          background-image: url('{% static "budgetroyale/images/backgroundGame.png"%}');
+          background-size: 100% 100%;
+          margin : 0;
+        padding : 0;
+        font-family: Arial;
+        }
+  </style>
     <div class="demo">
         <header class="demo__header"></header>
         <div class="demo__content">
@@ -88,8 +96,8 @@
         </div>
       </div>
       <div class = buttons> 
-        <button type = "button" id = "like"> <img src = "{% static "budgetroyale/images/up.png" %}"  width="10%" /></button>
-        <button type = "button" id = "dislike"><img src = "{% static "budgetroyale/images/no.png" %}"  " width="8%" /></button>
+        <button type = "button" id = "like"><img src = "{% static 'budgetroyale/images/up.png' %}" width = '10px'; id = 'likepic'/></button>
+        <button type = "button" id = "dislike"><img src = "{% static 'budgetroyale/images/no.png' %}" width = '10px'; id = 'dislikepic'/></button>
         </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
