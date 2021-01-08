@@ -1,48 +1,38 @@
-body {
-    margin : 0;
-    padding : 0;
-    font-family: Arial;
-    background: rgba(255, 209, 214, .7);
-}
-
 h1 {
     font-size: 40px;
 }
 
-button {
+.content {
+    position : absolute;
+    /* left 30 centers it for width 40 */
+    left : 30%;
+    width : 40%;
+    text-align: center;
+    border: 2px solid #000;
+    border-radius: 15px;
+    height: 20%;
+    background-color: #DCDCDC;
+}
+
+.content input {
+    position : absolute;
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-  }
-
-.content {
-    display : block;
-    margin-left: auto;
-    margin-right : auto;
-    width : 40%;
-    text-align: center;
-    border: 2px solid #000;
-    border-radius: 15px;
-    height: 40%;
-    background-color: #DCDCDC;
-}
-
-.content button {
-    margin-top:5%;
-    display : block;
     margin-left: auto;
     margin-right: auto;
     border-radius: 15px;
+    left : 10%;
     width: 80%;
-    height: 30%;
+    height: 50%;
     font-size: 30;
+    top : 25%;
 }
 
+/*
 .content input{
     border-radius: 5px;
     border: #808080;
@@ -55,7 +45,7 @@ button {
     font-size:30;
     text-align:center;
 }
-
+*/
 .center{
     display:block;
     margin-left: auto;
